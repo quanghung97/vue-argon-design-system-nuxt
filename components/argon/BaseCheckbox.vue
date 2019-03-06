@@ -1,11 +1,12 @@
 <template>
-  <div class="custom-control custom-checkbox"
-       :class="[{disabled: disabled}, inlineClass]">
-    <input :id="cbId"
-           class="custom-control-input"
-           type="checkbox"
-           :disabled="disabled"
-           v-model="model"/>
+  <div :class="[{disabled: disabled}, inlineClass]" class="custom-control custom-checkbox">
+    <input
+      v-model="model"
+      :id="cbId"
+      :disabled="disabled"
+      class="custom-control-input"
+      type="checkbox"
+    >
     <label :for="cbId" class="custom-control-label">
       <slot>
         <span v-if="inline">&nbsp;</span>
@@ -15,52 +16,55 @@
 </template>
 <script>
 export default {
-  name: "base-checkbox",
+  name: 'base-checkbox',
   model: {
-    prop: "checked"
+    prop: 'checked'
   },
   props: {
     checked: {
       type: [Array, Boolean],
-      description: "Whether checkbox is checked"
+      description: 'Whether checkbox is checked',
+      default: false
     },
     disabled: {
       type: Boolean,
-      description: "Whether checkbox is disabled"
+      description: 'Whether checkbox is disabled',
+      default: false
     },
     inline: {
       type: Boolean,
-      description: "Whether checkbox is inline"
+      description: 'Whether checkbox is inline',
+      default: false
     }
   },
   data() {
     return {
-      cbId: "",
+      cbId: '',
       touched: false
-    };
+    }
   },
   computed: {
     model: {
       get() {
-        return this.checked;
+        return this.checked
       },
       set(check) {
         if (!this.touched) {
-          this.touched = true;
+          this.touched = true
         }
-        this.$emit("input", check);
+        this.$emit('input', check)
       }
     },
     inlineClass() {
       if (this.inline) {
-        return `form-check-inline`;
+        return `form-check-inline`
       }
     }
   },
   mounted() {
     this.cbId = Math.random()
       .toString(16)
-      .slice(2);
+      .slice(2)
   }
-};
+}
 </script>

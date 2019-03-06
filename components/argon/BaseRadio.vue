@@ -1,11 +1,13 @@
 <template>
-  <div class="custom-control custom-radio" :class="[inlineClass, {disabled: disabled}]">
-    <input :id="cbId"
-           class="custom-control-input"
-           type="radio"
-           :disabled="disabled"
-           :value="name"
-           v-model="model" />
+  <div :class="[inlineClass, {disabled: disabled}]" class="custom-control custom-radio">
+    <input
+      v-model="model"
+      :id="cbId"
+      :disabled="disabled"
+      :value="name"
+      class="custom-control-input"
+      type="radio"
+    >
     <label :for="cbId" class="custom-control-label">
       <slot></slot>
     </label>
@@ -13,50 +15,54 @@
 </template>
 <script>
 export default {
-  name: "base-radio",
+  name: 'base-radio',
   props: {
     name: {
       type: [String, Number],
-      description: "Radio label"
+      description: 'Radio label',
+      default: undefined
     },
     disabled: {
       type: Boolean,
-      description: "Whether radio is disabled"
+      description: 'Whether radio is disabled',
+      default: true
     },
     value: {
       type: [String, Boolean],
-      description: "Radio value"
+      description: 'Radio value',
+      default: true
     },
     inline: {
       type: Boolean,
-      description: "Whether radio is inline"
+      description: 'Whether radio is inline',
+      default: true
     }
   },
   data() {
     return {
-      cbId: ""
-    };
+      cbId: ''
+    }
   },
   computed: {
     model: {
       get() {
-        return this.value;
+        return this.value
       },
       set(value) {
-        this.$emit("input", value);
+        this.$emit('input', value)
       }
     },
     inlineClass() {
       if (this.inline) {
-        return `form-check-inline`;
+        return `form-check-inline`
       }
-      return "";
+      return ''
     }
   },
   mounted() {
     this.cbId = Math.random()
       .toString(16)
-      .slice(2);
+      .slice(2)
   }
-};
+}
 </script>

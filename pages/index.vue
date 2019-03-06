@@ -1,27 +1,18 @@
 <template>
   <section class="container">
     <div>
-      <logo />
-      <h1 class="title">
-        vue-argon-design-system-nuxt
-      </h1>
-      <h2 class="subtitle">
-        Vue Argon Design System for Nuxt
-      </h2>
+      <logo/>
+      <h1 class="title">vue-argon-design-system-nuxt</h1>
+      <h2 class="subtitle">Vue Argon Design System for Nuxt</h2>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >GitHub</a>
+        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
+        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
       </div>
       <div class="links">
-        <b-dropdown text="Argon" size="lg" class="m-md-2" variant="primary">
+        <b-dropdown text="Argon"
+                    size="lg"
+                    class="m-md-2"
+                    variant="primary">
           <b-dropdown-item :to="{name: 'argon-starter'}">Starter</b-dropdown-item>
           <b-dropdown-item :to="{name: 'argon-demo'}">Demo</b-dropdown-item>
         </b-dropdown>
